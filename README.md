@@ -4,7 +4,6 @@ In this demo for CDK, we will be creating a CDK stack with following resources:
 - A dynamodb table
 - A s3 bucket
 
-although, there would be no real
 
 
 ## Installing the CDK
@@ -18,7 +17,14 @@ verify that you cdk is installed and available
 cdk --version
 ```
 
+## Create an empty directory for infra
+```bash
+mkdir infra
+cd infra
+```
+
 ## Create a CDK app
+
 Here we are generating a new CDK app
 ```bash
 cdk init app --language typescript 
@@ -34,6 +40,8 @@ npm install @aws-cdk/aws-dynamodb @aws-cdk/aws-lambda @aws-cdk/aws-s3
 
 Below code creates a new lambda function
 ```typescript
+import * as lambda from '@aws-cdk/aws-lambda';
+
 const fn = new lambda.Function(this, 'MyFunction', {
     runtime: lambda.Runtime.NODEJS_12_X,
     handler: 'index.handler',
@@ -43,7 +51,9 @@ const fn = new lambda.Function(this, 'MyFunction', {
 
 Following code snippet create a dynamo db table
 ```typescript
-const table = new dynamodb.Table(this, "table", {
+import * as dynamodb from '@aws-cdk/aws-dynamodb';
+
+const table = new dynamodb.Table(this, "table", {
     partitionKey: {
         name: "userId",
         type: dynamodb.AttributeType.STRING
@@ -58,8 +68,19 @@ Following code snippet create a dynamo db table
 
 This code creates a new s3 bucket.
 ```typescript
-const bucket = new s3.Bucket(this, 'MyFirstBucket', {
+import * as s3 from '@aws-cdk/aws-s3';
+
+const bucket = new s3.Bucket(this, 'MyFirstBucket', {
     removalPolicy: cdk.RemovalPolicy.DESTROY
 });
 ```
 
+## Deploying the stack
+```bash
+cdk deploy
+```
+
+## Destroying the stack
+```bash
+cdk destroy
+```
