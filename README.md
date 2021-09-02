@@ -79,12 +79,12 @@ const bucket = new s3.Bucket(this, 'MyFirstBucket', {
 ```bash
 cdk deploy
 ```
+Once you run the above command, you'll see an output depicting your infra being initialised.
+You can also check the stack creation status on the AWS Cloudformation console: https://console.aws.amazon.com/cloudformation/home
 
 ## Destroying the stack
 ```bash
 cdk destroy
 ```
-
-## checking the stack in aws console
-
-https://console.aws.amazon.com/cloudformation/home
+Once you run the above command, you'll see an output depicting your infra being destroyed/deleted.
+You can also check the stack creation status on the AWS Cloudformation console: https://console.aws.amazon.com/cloudformation/home
