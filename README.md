@@ -84,3 +84,7 @@ cdk deploy
 ```bash
 cdk destroy
 ```
+
+## checking the stack in aws console
+
+https://console.aws.amazon.com/cloudformation/home
